@@ -1,0 +1,2 @@
+angular.module("appModule").run(["$templateCache", function($templateCache) {$templateCache.put("components/main-component/main-component.html","<div class=\"row\">\r\n    <div class=\"well col-xs-6\">\r\n        test\r\n    </div>\r\n     <div class=\"well col-xs-6\">\r\n        test\r\n    </div>\r\n</div>");
+$templateCache.put("directives/qa-basic-template-url/qa-basic-template-url-directive.html","<div>\r\n    <span>I am a very basic component that fetches HTML from a file!</span>\r\n</div>");}]);
