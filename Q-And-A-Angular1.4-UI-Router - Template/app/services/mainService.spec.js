@@ -21,8 +21,8 @@ describe("mainService", function () {
         expect(mainService).toBeDefined();
     });
 
-    it('should have the required routing functions', function () {
-        expect(mainService.getStaticArray).toBeDefined();
+    it('should return the hardcoded value', function () {
+        expect(mainService.getValue()).toBe('someValue');
     });
 
 });

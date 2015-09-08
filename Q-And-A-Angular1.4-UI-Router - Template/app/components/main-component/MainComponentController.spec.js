@@ -14,7 +14,7 @@ describe('MenuController', function () {
     }));
 
     function createController() {
-        controller = controllerService('MenuController as vm', {
+        controller = controllerService('MainComponentController as vm', {
             '$scope': $scope
         });
     }

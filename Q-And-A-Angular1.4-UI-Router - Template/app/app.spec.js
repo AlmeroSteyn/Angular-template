@@ -22,12 +22,12 @@ describe('appModule', function () {
 
     it('should set the correct routes', function () {
 
-        expect(mockStateProvider.state).toHaveBeenCalledWith('main-component', {
+        expect(mockStateProvider.state).toHaveBeenCalledWith('mainComponent', {
             url: '/home',
             templateUrl: 'components/main-component/main-component.html',
-            controller: 'MenuController',
-            controllerAs:'main-component',
-            name: 'main-component'
+            controller: 'MainComponentController',
+            controllerAs:'mainComponent',
+            name: 'mainComponent'
         });
 
     });
