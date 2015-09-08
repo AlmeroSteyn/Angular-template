@@ -15,37 +15,59 @@ var gulp = require('gulp'),
     vendorName = 'vendor.min.js',
     isDebug = false;
 
-gulp.task('buildVendor', function () {
-    return browserify('./vendor.js', {debug: false})
-        .bundle()
-        .pipe(source('vendor.js'))
-        .pipe(gulp.dest('./dist/js'));
-});
+gulp.task('buildVendor',buildVendor);
 
-gulp.task('buildAppViews', function () {
-    return gulp.src('./app/**/*.html')
-        .pipe(templateCache({filename: 'appViews.js', module: 'appModule'}))
-        .pipe(gulp.dest('./dist/views'));
-});
+gulp.task('buildVendorCss', buildVendorCss);
 
-gulp.task('buildApp',['buildAppViews'], function () {
-    return browserify('./app/app.js', {debug: true})
-        .bundle()
-        .pipe(source('application.js'))
-        .pipe(gulp.dest('./dist/js'));
-});
+gulp.task('buildAppViews', buildAppViews);
 
-gulp.task('buildVendorCss', function(){
-    gulp.src(['./bower_components/bootstrap/dist/css/bootstrap.css'],{base: 'bower_components/'})
-        .pipe(concatCss("vendorStyles.css"))
-        .pipe(gulp.dest('./dist/css'));
-});
+gulp.task('buildApp',['buildAppViews'], buildApp);
 
 gulp.task('build', [
     'buildVendor',
     'buildVendorCss',
     'buildApp'
 ], buildMin);
+
+gulp.task('set-debug', setDebug);
+
+gulp.task('buildVendorDebug',buildVendor);
+
+gulp.task('buildAppViewsDebug', ['set-debug'], buildAppViews);
+
+gulp.task('buildAppDebug',['buildAppViewsDebug'], buildApp);
+
+gulp.task('build-debug', [
+    'buildVendorDebug',
+    'buildVendorCss',
+    'buildAppDebug'
+], buildMin);
+
+function buildVendorCss(){
+    gulp.src(['./bower_components/bootstrap/dist/css/bootstrap.css'],{base: 'bower_components/'})
+        .pipe(concatCss("vendorStyles.css"))
+        .pipe(gulp.dest('./dist/css'));
+}
+
+function buildApp(){
+    return browserify('./app/app.js', {debug: isDebug})
+        .bundle()
+        .pipe(source('application.js'))
+        .pipe(gulp.dest('./dist/js'));
+}
+
+function buildAppViews(){
+    return gulp.src('./app/**/*.html')
+        .pipe(templateCache({filename: 'appViews.js', module: 'appModule'}))
+        .pipe(gulp.dest('./dist/views'));
+}
+
+function buildVendor(){
+    return browserify(vendorSource, {debug: isDebug})
+        .bundle()
+        .pipe(source(vendorName))
+        .pipe(gulp.dest('./dist/js'));
+}
 
 function buildMin() {
     return gulp.src('./dist/js/application.js')
