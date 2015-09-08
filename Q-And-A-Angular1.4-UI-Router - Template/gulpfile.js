@@ -4,7 +4,16 @@ var gulp = require('gulp'),
     source = require('vinyl-source-stream'),
     browserify = require('browserify'),
     concatCss = require('gulp-concat-css'),
-    templateCache = require('gulp-angular-templatecache');
+    less = require('gulp-less'),
+    LessPluginCleanCSS = require('less-plugin-clean-css'),
+    cleancss = new LessPluginCleanCSS({advanced: true}),
+    rename = require('gulp-rename'),
+    templateCache = require('gulp-angular-templatecache'),
+    preprocessify = require('preprocessify'),
+    uglify = require('gulp-uglify'),
+    vendorSource = './vendor.minified.js',
+    vendorName = 'vendor.min.js',
+    isDebug = false;
 
 gulp.task('buildVendor', function () {
     return browserify('./vendor.js', {debug: false})
@@ -36,4 +45,17 @@ gulp.task('build', [
     'buildVendor',
     'buildVendorCss',
     'buildApp'
-]);
+], buildMin);
+
+function buildMin() {
+    return gulp.src('./dist/js/application.js')
+        .pipe(uglify())
+        .pipe(rename('application.min.js'))
+        .pipe(gulp.dest('./dist/js'));
+}
+
+function setDebug() {
+    vendorSource = './vendor.js';
+    vendorName = 'vendor.js';
+    isDebug = true;
+}
