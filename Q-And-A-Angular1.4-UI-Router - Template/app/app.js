@@ -10,11 +10,11 @@
         $urlRouterProvider.otherwise("/home");
 
         $stateProvider
-            .state('main-component', {
+            .state('mainComponent', {
                 url: '/home',
                 templateUrl: 'components/main-component/main-component.html',
-                controller: 'MenuController',
-                controllerAs: 'main-component'
+                controller: 'MainComponentController',
+                controllerAs: 'mainComponent'
             });
     }
 

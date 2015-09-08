@@ -1,9 +1,14 @@
 (function(){
     'use strict';
 
-    angular.module('appModule').controller('MenuController', menuController);
+    angular.module('appModule').controller('MainComponentController', mainComponentController);
 
-    function menuController(){
+    mainComponentController.$inject = ['mainService'];
+
+    function mainComponentController(mainService){
+        var vm = this;
+
+        vm.someValue = mainService.getValue();
     }
 
 })();
