@@ -3,8 +3,14 @@
 
     angular.module('appModule').controller('MainController', mainController);
 
-    function mainController() {
+    mainController.$inject = ['mainService'];
 
+    function mainController(mainService) {
+
+        var vm = this;
+
+        vm.someValue = mainService.getValue();
+        console.log(vm.someValue);
 
     }
 })();

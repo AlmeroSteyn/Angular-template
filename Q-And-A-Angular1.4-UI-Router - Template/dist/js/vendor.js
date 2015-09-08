@@ -1,7 +1,7 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 require('lodash');
 require('./bower_components/angular/angular.js');
-require('./bower_components/angular-bootstrap/ui-bootstrap-tpls');
+require('./bower_components/angular-bootstrap/ui-bootstrap-tpls.js');
 require('./bower_components/restangular/dist/restangular.js');
 require('./bower_components/angular-ui-router/release/angular-ui-router.js');
 require('./bower_components/angular-i18n/angular-locale_nl-nl.js');
@@ -11,7 +11,7 @@ require('./bower_components/angular-messages/angular-messages.js');
 
 
 
-},{"./bower_components/angular-animate/angular-animate.js":2,"./bower_components/angular-aria/angular-aria.js":3,"./bower_components/angular-bootstrap/ui-bootstrap-tpls":4,"./bower_components/angular-i18n/angular-locale_nl-nl.js":5,"./bower_components/angular-messages/angular-messages.js":6,"./bower_components/angular-ui-router/release/angular-ui-router.js":7,"./bower_components/angular/angular.js":8,"./bower_components/restangular/dist/restangular.js":10,"lodash":9}],2:[function(require,module,exports){
+},{"./bower_components/angular-animate/angular-animate.js":2,"./bower_components/angular-aria/angular-aria.js":3,"./bower_components/angular-bootstrap/ui-bootstrap-tpls.js":4,"./bower_components/angular-i18n/angular-locale_nl-nl.js":5,"./bower_components/angular-messages/angular-messages.js":6,"./bower_components/angular-ui-router/release/angular-ui-router.js":7,"./bower_components/angular/angular.js":8,"./bower_components/restangular/dist/restangular.js":10,"lodash":9}],2:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.4
  * (c) 2010-2015 Google, Inc. http://angularjs.org
